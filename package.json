@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ehxdie/Hardhat-Simple-Storage#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "ethers": "^6.8.1",
     "hardhat": "^2.19.0"
   }
 }
