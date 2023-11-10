@@ -14,12 +14,13 @@ async function main() {
 
   // Actual deploying of the contract
   const contract = await contractfactory.deploy();
-  
+
   // Transaction receipt
   const tx = await contract.deploymentTransaction();
   console.log( await contract.getAddress())
   
 };
+
 
 main()
 .then(() => {process.exit(0)})
