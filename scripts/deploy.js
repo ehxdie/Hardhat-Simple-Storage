@@ -1,7 +1,7 @@
 // Imports
 // Imported ethers from hardhat rather than independently
 const { ethers } = require("hardhat");
-
+ require
 
 // This function will hold most of the neccessary interactivity
 async function main() {
@@ -21,6 +21,10 @@ async function main() {
   
 };
 
+// Quick verification 
+async function verify(contractaddress, args){
+
+}
 
 main()
 .then(() => {process.exit(0)})
