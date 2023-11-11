@@ -33,4 +33,23 @@ main()
   process.exit(1)
 })
 
+/* OVER THE WEEKND TRAINING */
+const ethers = require("ethers");
+const fs = require("fs");
+
+async function main() {
+  const provider = new ethers.JsonRpcProvider("url");
+  const wallet = new ethers.Wallet("privatekey", "provider");
+  const abi = fs.readFileSync("");
+  const bin = fs.readFileSync("");
+  const contractFactory = await ethers.ContractFactory(abi,bin,wallet);
+  const contract = await contractFactory.deploy();
+}
+
+main()
+.then(() => process.exit(0))
+.catch((err) => {
+  console.log(err);
+  process.exit(1);
+})
 
