@@ -53,3 +53,21 @@ main()
   process.exit(1);
 })
 
+/* Over da the weeknd more training */
+/* HARDHAT */
+const { ethers } = require("hardhat");
+const fs = require("fs");
+
+async function main() {
+  const contractFactory = await ethers.getContractFactory(
+    "smartcontractname"
+  );
+  const contract = await contractFactory.deploy();
+  const transactionReceipt = await contract.deploymentTransaction();
+}
+
+main()
+.then(() => process.exit(0))
+.catch((err) => {
+  console.log(err)
+  process.exit(1)})
