@@ -1,6 +1,6 @@
 // Imports
 // Imported ethers from hardhat rather than independently
-const { ethers } = require("hardhat");
+const { ethers, run, network } = require("hardhat");
  require
 
 // This function will hold most of the neccessary interactivity
@@ -17,14 +17,50 @@ async function main() {
 
   // Transaction receipt
   const tx = await contract.deploymentTransaction();
-  console.log( await contract.getAddress())
+  const contractAddress = await contract.getAddress()
+  console.log(contractAddress);
+  console.log(network.config);
+  
+  // verifying the contract if it is being deployed to a testnet
+  if (network.config.chainId === 31337) {
+    // Waiting for two block confirmations before the contract is verified
+    await tx.wait(2);
+    await verify(contractAddress, []);
+
+  }
+
+  // Interacting with the smart contract
+  const currentFavoriteNumber = await contract.retrieve();
+  console.log(currentFavoriteNumber);
+
+  const transactionResponse = await contract.store(1);
+  await transactionResponse.wait(2);
+
+  const newFavoriteNumber = await contract.retrieve();
+  console.log(newFavoriteNumber);
+
+
+
+
   
 };
 
 // Quick verification 
 async function verify(contractaddress, args){
+  // Using the imported run package
+  try {
+    await run("verify:verify", {
+      address: contractaddress,
+      constructorArguments: args,
+    })
 
-}
+  } catch (err) {
+    if (err.message.toLowerCase().includes("already verified")){
+      console.log("Already verified")
+    } else {
+      console.log(err)
+    }
+} }
 
 main()
 .then(() => {process.exit(0)})
@@ -33,7 +69,7 @@ main()
   process.exit(1)
 })
 
-/* OVER THE WEEKND TRAINING */
+/* OVER THE WEEKND TRAINING 
 const ethers = require("ethers");
 const fs = require("fs");
 
@@ -53,8 +89,8 @@ main()
   process.exit(1);
 })
 
-/* Over da the weeknd more training */
-/* HARDHAT */
+/* Over da the weeknd more training 
+/* HARDHAT 
 const { ethers } = require("hardhat");
 const fs = require("fs");
 
@@ -70,4 +106,4 @@ main()
 .then(() => process.exit(0))
 .catch((err) => {
   console.log(err)
-  process.exit(1)})
+  process.exit(1)})*/
