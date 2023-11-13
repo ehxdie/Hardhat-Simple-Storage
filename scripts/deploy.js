@@ -1,7 +1,7 @@
 // Imports
 // Imported ethers from hardhat rather than independently
 const { ethers, run, network } = require("hardhat");
- require
+
 
 // This function will hold most of the neccessary interactivity
 async function main() {
@@ -17,27 +17,32 @@ async function main() {
 
   // Transaction receipt
   const tx = await contract.deploymentTransaction();
-  const contractAddress = await contract.getAddress()
+  const contractAddress = await contract.getAddress();
   console.log(contractAddress);
+
   console.log(network.config);
+ 
   
   // verifying the contract if it is being deployed to a testnet
-  if (network.config.chainId === 31337) {
-    // Waiting for two block confirmations before the contract is verified
-    await tx.wait(2);
+  //if (network.config.chainId === 11155111) {
+    console.log("Waiting for block confirmation...");
+    // Waiting for 6 block confirmations before the contract is verified
+    await tx.wait(6);
     await verify(contractAddress, []);
 
-  }
-
+  //}
+  
+  
   // Interacting with the smart contract
+  console.log("Interacting with the blockchain...");
   const currentFavoriteNumber = await contract.retrieve();
-  console.log(currentFavoriteNumber);
+  console.log(currentFavoriteNumber.toString());
 
-  const transactionResponse = await contract.store(1);
+  const transactionResponse = await contract.store("4");
   await transactionResponse.wait(2);
 
   const newFavoriteNumber = await contract.retrieve();
-  console.log(newFavoriteNumber);
+  console.log(newFavoriteNumber.toString());
 
 
 
