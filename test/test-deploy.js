@@ -30,4 +30,16 @@ describe("SimpleStorage", function() {
         expect(storedValue.toString()).to.equal(expectedValue);
     }) 
 
+    // This test checks if the peopleList is populated with the inputted
+    it("the people list should be updated with the pushed favorite number and", async function (){
+        await simpleStorage.addPeople(2,"jeff");
+        const expectedName = "jeff";
+        const expectedNumber = "2";
+        const storedName = await simpleStorage.getPerson(0);
+        expect(storedName[0]).to.equal(expectedName);
+        expect(storedName[1].toString()).to.equal(expectedNumber); 
+        
+
+    })
+
 })

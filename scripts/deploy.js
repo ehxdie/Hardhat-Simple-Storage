@@ -44,6 +44,13 @@ async function main() {
   const newFavoriteNumber = await contract.retrieve();
   console.log(newFavoriteNumber.toString());
 
+  // testing the addperson and getperson functions
+  await contract.addPeople("2","jeff");
+
+  const person = await contract.getPerson(0);
+
+  console.log(person[0])
+
 
 
 

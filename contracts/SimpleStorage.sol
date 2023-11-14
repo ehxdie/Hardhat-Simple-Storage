@@ -49,4 +49,10 @@ contract SimpleStorage {
     function retrieve() public view returns (uint256) {
         return favoriteNumber;
     }
+
+    // Test function
+    function getPerson(uint index) public view returns (string memory , uint256) {
+            People storage person = peopleList[index];
+            return (person.name, person.favoriteNumber);
+    }
 }
