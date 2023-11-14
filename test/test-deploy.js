@@ -14,11 +14,20 @@ describe("SimpleStorage", function() {
 
     });
 
+    // This test checks if the favorite number variable is equal 0 
     it("Should return a favorite number of 0", async function () {
         const favoriteNumber = await simpleStorage.retrieve();
         const expectedValue = "0";
         //assert.equal(favoriteNumber.toString(), expectedValue);
         expect(favoriteNumber.toString()).to.equal(expectedValue);
     })
+
+    // This test checks if the store function works adequately 
+    it("should update when the store function is called", async function () {
+        await simpleStorage.store("2");
+        const expectedValue = "2";
+        const storedValue = await simpleStorage.retrieve();
+        expect(storedValue.toString()).to.equal(expectedValue);
+    }) 
 
 })
