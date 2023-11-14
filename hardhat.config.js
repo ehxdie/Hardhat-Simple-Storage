@@ -1,6 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("./tasks/block-number");
+require("hardhat-gas-reporter");
+require("solidity-coverage");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -17,5 +19,9 @@ module.exports = {
   },
   etherscan: {
     apiKey: process.env.ETHER_SCAN_API_KEY
-  }
+  },
+  gasReporter: {
+    enabled:false,
+    outputFile: "gas-report.txt",
+  }  
 };

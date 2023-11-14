@@ -20,9 +20,11 @@
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "@nomiclabs/hardhat-etherscan": "^3.1.7",
     "ethers": "^6.8.1",
-    "hardhat": "^2.19.0"
+    "hardhat": "^2.19.0",
+    "solidity-coverage": "^0.8.5"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "hardhat-gas-reporter": "^1.0.9"
   }
 }

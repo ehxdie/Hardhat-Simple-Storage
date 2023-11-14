@@ -20,17 +20,17 @@ async function main() {
   const contractAddress = await contract.getAddress();
   console.log(contractAddress);
 
-  console.log(network.config);
+  // console.log(network.config);
  
   
-  // verifying the contract if it is being deployed to a testnet
+  /* verifying the contract if it is being deployed to a testnet
   //if (network.config.chainId === 11155111) {
     console.log("Waiting for block confirmation...");
     // Waiting for 6 block confirmations before the contract is verified
     await tx.wait(6);
     await verify(contractAddress, []);
 
-  //}
+  //}*/
   
   
   // Interacting with the smart contract
@@ -39,7 +39,7 @@ async function main() {
   console.log(currentFavoriteNumber.toString());
 
   const transactionResponse = await contract.store("4");
-  await transactionResponse.wait(2);
+  //await transactionResponse.wait(2);
 
   const newFavoriteNumber = await contract.retrieve();
   console.log(newFavoriteNumber.toString());
