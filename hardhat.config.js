@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config()
+require("dotenv").config();
+require("./tasks/block-number");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -9,6 +10,9 @@ module.exports = {
     sepolia: {
       url: process.env.RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545/",
     }
   },
   etherscan: {
